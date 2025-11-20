@@ -30,26 +30,18 @@ form{
   font-style: oblique;
   font-weight:50px ;
   margin: 20px;
-  padding: 10px;
+  padding: 20px;
   background-image: url(3.jpeg);
   background-repeat: no-repeat;
   background-size:400px;
-  padding:50px;
-
-}
-button{
-  color: blueviolet;
-  margin: 50px;
 }
 .form2{
   color:white;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-style: oblique;
   font-weight:50px ;
-  margin: 20px;
-  padding: 10px;
   background-image: url(telephone.jpg);
   background-repeat: no-repeat;
   background-size:400px;
-
+  padding: 10px;
 }
