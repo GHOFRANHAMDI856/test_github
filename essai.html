@@ -38,57 +38,40 @@
   <canvas id="chartAppareil" width="400" height="250"></canvas>
 
   <script>
-    // Récupérer le bouton
     const bouton = document.getElementById("vote-appareil");
-
-    // Charger ou initialiser les votes
     let votes = JSON.parse(localStorage.getItem("votesAppareil2")) || {
       pc: 0,
       tablette: 0,
       telephone: 0
     };
 
-    // Fonction pour afficher les résultats dans le canvas
     function dessinerResultats() {
       const canvas = document.getElementById("chartAppareil");
       const ctx = canvas.getContext("2d");
-
       const total = votes.pc + votes.tablette + votes.telephone;
-
-      const couleurs = {
-        pc: "#4e79a7",
-        tablette: "#f28e2b",
-        telephone: "#e15759"
-      };
-
+      const couleurs = { pc: "#4e79a7", tablette: "#f28e2b", telephone: "#e15759" };
       const pourcents = {
         pc: total ? (votes.pc / total) * 100 : 0,
         tablette: total ? (votes.tablette / total) * 100 : 0,
         telephone: total ? (votes.telephone / total) * 100 : 0
       };
-
       const labels = ["PC", "Tablette", "Téléphone"];
       const values = [pourcents.pc, pourcents.tablette, pourcents.telephone];
       const keys = ["pc", "tablette", "telephone"];
-
       let progress = 0;
 
       function animate() {
-        let y = 30; // réinitialiser y à chaque frame
-        progress += 3; // vitesse animation
-
+        let y = 30;
+        progress += 3;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         for (let i = 0; i < values.length; i++) {
-          let width = values[i] * 3; // conversion % -> pixels
-
+          let width = values[i] * 3;
           ctx.fillStyle = "#222";
           ctx.font = "14px Arial";
           ctx.fillText(`${labels[i]} : ${votes[keys[i]]} votes (${values[i].toFixed(1)}%)`, 10, y - 10);
-
           ctx.fillStyle = couleurs[keys[i]];
           ctx.fillRect(10, y, Math.min(progress, width), 20);
-
           y += 50;
         }
 
@@ -98,18 +81,14 @@
       animate();
     }
 
-    // Afficher au chargement
     dessinerResultats();
 
-    // Action lors du vote
     bouton.addEventListener("click", () => {
       const choix = document.querySelector('input[name="appareil"]:checked');
-
       if (!choix) {
         alert("Veuillez sélectionner une option !");
         return;
       }
-
       votes[choix.value]++;
       localStorage.setItem("votesAppareil2", JSON.stringify(votes));
       dessinerResultats();
