@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sondage Appareil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin-top: 20px;
+      display: block;
+      background-color: #f9f9f9;
+    }
+    label {
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 5px 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quel appareil utilisez-vous le plus ?</h1>
+
+  <form id="form-appareil">
+    <label><input type="radio" name="appareil" value="pc"> PC</label>
+    <label><input type="radio" name="appareil" value="tablette"> Tablette</label>
+    <label><input type="radio" name="appareil" value="telephone"> Téléphone</label>
+    <br>
+    <button type="button" id="vote-appareil">Voter</button>
+  </form>
+
+  <canvas id="chartAppareil" width="400" height="250"></canvas>
+
+  <script>
+    // Récupérer le bouton
+    const bouton = document.getElementById("vote-appareil");
+
+    // Charger ou initialiser les votes
+    let votes = JSON.parse(localStorage.getItem("votesAppareil2")) || {
+      pc: 0,
+      tablette: 0,
+      telephone: 0
+    };
+
+    // Fonction pour afficher les résultats dans le canvas
+    function dessinerResultats() {
+      const canvas = document.getElementById("chartAppareil");
+      const ctx = canvas.getContext("2d");
+
+      const total = votes.pc + votes.tablette + votes.telephone;
+
+      const couleurs = {
+        pc: "#4e79a7",
+        tablette: "#f28e2b",
+        telephone: "#e15759"
+      };
+
+      const pourcents = {
+        pc: total ? (votes.pc / total) * 100 : 0,
+        tablette: total ? (votes.tablette / total) * 100 : 0,
+        telephone: total ? (votes.telephone / total) * 100 : 0
+      };
+
+      const labels = ["PC", "Tablette", "Téléphone"];
+      const values = [pourcents.pc, pourcents.tablette, pourcents.telephone];
+      const keys = ["pc", "tablette", "telephone"];
+
+      let progress = 0;
+
+      function animate() {
+        let y = 30; // réinitialiser y à chaque frame
+        progress += 3; // vitesse animation
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < values.length; i++) {
+          let width = values[i] * 3; // conversion % -> pixels
+
+          ctx.fillStyle = "#222";
+          ctx.font = "14px Arial";
+          ctx.fillText(`${labels[i]} : ${votes[keys[i]]} votes (${values[i].toFixed(1)}%)`, 10, y - 10);
+
+          ctx.fillStyle = couleurs[keys[i]];
+          ctx.fillRect(10, y, Math.min(progress, width), 20);
+
+          y += 50;
+        }
+
+        if (progress < 300) requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    // Afficher au chargement
+    dessinerResultats();
+
+    // Action lors du vote
+    bouton.addEventListener("click", () => {
+      const choix = document.querySelector('input[name="appareil"]:checked');
+
+      if (!choix) {
+        alert("Veuillez sélectionner une option !");
+        return;
+      }
+
+      votes[choix.value]++;
+      localStorage.setItem("votesAppareil2", JSON.stringify(votes));
+      dessinerResultats();
+      alert("Merci pour votre vote !");
+    });
+  </script>
+</body>
+</html>

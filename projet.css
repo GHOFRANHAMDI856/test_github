@@ -1,6 +1,6 @@
 body {
   background-color: pink;
-  border: solid palevioletred 10px;
+  border: solid powderblue 20px;
 }
 h1 {
   color:blueviolet;
@@ -10,6 +10,7 @@ h1 {
   text-align: center;
   text-transform:: 100px;
   padding:100px;
+  background-image: url(images.jpeg);
 } 
 h2{
   color:purple;
@@ -17,6 +18,14 @@ h2{
   font-style: oblique;
   font-weight:1px ;
   padding: 1px;
+}
+h3{
+  color:blueviolet;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: oblique;
+  font-weight:50px ;
+  text-align: center;
+  text-transform:: 100px;
 }
 select{
   color:peru;
@@ -44,4 +53,15 @@ form{
   background-repeat: no-repeat;
   background-size:400px;
   padding: 10px;
+}
+canvas{
+  background-color: white;
+  color:black;
+  padding:10px;
+}
+button{
+  background-color: aquamarine;
+  color: black;
+  text-shadow: 20px;
+  padding: 50px;
 }

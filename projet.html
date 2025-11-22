@@ -8,11 +8,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
   <h1>Utilisation des réseaux sociaux</h1>
-
   <h2>Compte tenu de votre expérience complète avec les sites de réseautage social, dans quelle mesure recommanderiez-vous à votre ami ? (0 = improbable, 10 = probable)</h2>
-
   <select id="score-select">
     <option value="">----choisir une option---</option>
     <option value="0">0</option>
@@ -27,46 +24,28 @@
     <option value="9">9</option>
     <option value="10">10</option>
   </select>
-
   <h3>Résultats des votes :</h3>
   <canvas id="chartScore" width="400" height="200"></canvas>
   <button id="vote-score">Voter score</button>
-
-  <h3>-------------pour chaque question choisir une réponse--------</h3>
-
   <form id="form-reseau">
     <legend>Quel site de réseautage social utilisez-vous le plus ?</legend>
-
     <input type="radio" id="facebook" name="reseau" value="facebook">
     <label for="facebook">Facebook</label><br>
-
     <input type="radio" id="youtube" name="reseau" value="youtube">
     <label for="youtube">Youtube</label><br>
-
     <input type="radio" id="twitter" name="reseau" value="twitter">
     <label for="twitter">Twitter</label><br>
-
     <input type="radio" id="instagram" name="reseau" value="instagram">
     <label for="instagram">Instagram</label><br>
-
     <input type="radio" id="snapchat" name="reseau" value="snapchat">
     <label for="snapchat">Snapchat</label><br>
-
     <input type="radio" id="autre" name="reseau" value="autre">
     <label for="autre">Autre</label><br>
   </form>
   <h3>Résultats des votes :</h3>
   <canvas id="chartReseau" width="400" height="200"></canvas>
   <button id="vote-reseau">Voter réseau</button>
-  <div class="form2">
-    <legend>Sur quel appareil cosultez -vous les istes de réseaux sociaux?</legend>
-    <input type="radio" id="portables/ordinateurs portables" name="appreil" value="p" />
-    <label for="portables/ordinateurs portables">portables/ordinateurs portables💻</label><br/>
-    <input type="radio" id="des tablettes comme des ipads" name="appareil" value="t" />
-    <label for="des tablettes comme des ipads">"des tablettes comme des ipads</label><br/>
-    <input type="radio" id="telephone portables" name="appareil" value="tp" />
-    <label for="telephone portables">telephone portables📲</label><br/>
-   </div>
+  <iframe src="essai.html" width="600" height="400"></iframe>
   <script src="projet.js"></script>
 </body>
 </html>
