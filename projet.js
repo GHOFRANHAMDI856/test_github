@@ -48,10 +48,8 @@ document.getElementById("vote-score").addEventListener("click", () => {
 });
 document.getElementById("vote-reseau").addEventListener("click", () => {
   const value = document.querySelector("input[name='reseau']:checked");
-
   if (value) {
     const reseau = value.value;
-
     if (reseauData.hasOwnProperty(reseau)) {
       reseauData[reseau]++;
       chartReseau.data.datasets[0].data = Object.values(reseauData);
