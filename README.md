@@ -1,3 +1,6 @@
+
+
+
 https://github.com/GHOFRANHAMDI856
 
 https://ghofranhamdi856.github.io/test_github/
@@ -103,3 +106,17 @@ Adapter l’affichage des résultats sur mobile
 Structurer le code JavaScript proprement
 
 Comprendre le fonctionnement de GitHub Pages pour le déploiement
+
+  //Solutions apportées
+
+Utilisation de localStorage pour garder le choix de l’utilisateur
+
+Ajout de conditions pour bloquer un deuxième vote
+
+Tests sur différents appareils pour améliorer le responsive
+
+Découpage du code en fonctions JavaScript claires
+
+Lecture de documentation (MDN, GitHub Docs) pour résoudre les problèmes
+
+Plusieurs commits progressifs pour améliorer l’évolution du projet
